@@ -20,6 +20,6 @@ export class RecipesListComponent implements OnInit {
   }
 
   public getRecipes(){
-    return this.http.get<RecipeItem[]>("https://localhost:5001/api/recipe");
+    return this.http.get<RecipeItem[]>("https://recipebackend.azurewebsites.net/api/recipe");
   }
 }

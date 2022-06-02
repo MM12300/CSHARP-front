@@ -10,6 +10,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { StarsComponent } from './stars/stars.component';
+import { DifficultyComponent } from './difficulty/difficulty.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StarsComponent } from './stars/stars.component';
     FooterComponent,
     RecipesListComponent,
     RecipeDetailsComponent,
-    StarsComponent
+    StarsComponent,
+    DifficultyComponent
   ],
   imports: [
     BrowserModule,

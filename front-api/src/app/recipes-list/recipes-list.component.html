@@ -1,31 +1,35 @@
 <div *ngIf="recipes !== undefined; else noRecipes">
   <h3>Your recipes</h3>
+  <hr>
+  <h6>Check the recipes you have just created with our API</h6>
   <table class="table">
     <thead>
     <tr>
       <th scope="col">Recette</th>
       <th scope="col">Durée</th>
       <th scope="col">Score</th>
+      <th scope="col">Difficulty</th>
       <th scope="col">Budget</th>
       <th scope="col">Description</th>
+      <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let recipe of recipes">
-      <td class="col-3">
-        <img src="{{recipe.urlPicture}}" alt="recipeImage">
+      <td class="col-3 align-middle">
+        <img class="pr-2" src="{{recipe.urlPicture}}" alt="recipeImage">
         <a routerLink="/recipe/{{recipe.id}}">
-        {{recipe.name}}
-      </a>
+          {{recipe.name}}
+        </a>
       </td>
-      <td class="col-1">{{recipe.duration}} min</td>
-      <td class="col-1">
-      <app-stars [recipe]="recipe"></app-stars>
+      <td class="col-1 align-middle">{{recipe.duration}} min</td>
+      <td class="col-1 align-middle">
+        <app-stars [recipe]="recipe"></app-stars>
       </td>
-      <td>{{recipe.budget}} €</td>
-      <td class="col-7">{{recipe.description}}</td>
-
-    </tbody>
+      <td class="col-1 align-middle text-center"><app-difficulty [recipe]="recipe"></app-difficulty></td>
+      <td class="col-1 align-middle">{{recipe.budget}} €</td>
+      <td class="col-4 align-middle">{{recipe.description}}</td>
+      <td class="col-1 text-center align-middle"><button class="btn btn-danger text-white">X</button></td>
   </table>
 </div>
 
