@@ -1,3 +1,40 @@
+<div>
+  <h3>Add a recipe</h3>
+  <form [formGroup]="recipeForm" (ngSubmit)="createRecipe()">
+
+    <label for="name">Recipe name</label>
+    <input id="name" name="name" formControlName="name" placeholder="name" type="text" />
+
+    <label for="urlPicture">Recipe photo Url</label>
+    <input id="urlPicture" name="urlPicture" formControlName="urlPicture" placeholder="urlPicture" type="text" />
+
+    <label for="description">Description</label>
+    <input id="description" name="description" formControlName="description" placeholder="description" type="text" />
+
+    <label for="ingredients">Ingredients</label>
+    <input id="ingredients" name="ingredients" formControlName="ingredients" placeholder="ingredients" type="text" />
+
+    <label for="duration">Duration</label>
+    <input id="duration" name="duration" formControlName="duration" placeholder="duration" type="number" />
+
+    <label for="score">Score</label>
+    <input id="score" name="score" formControlName="score" placeholder="score" type="number" />
+
+    <label for="difficulty">Difficulty</label>
+    <input id="difficulty" name="difficulty" formControlName="difficulty" placeholder="difficulty" type="number" />
+
+    <label for="budget">Budget</label>
+    <input id="budget" name="budget" formControlName="budget" placeholder="budget" type="number" />
+
+    <label for="recipe">Recipe</label>
+    <input id="recipe" name="recipe" formControlName="recipe" placeholder="recipe" type="text" />
+
+    <button type="submit">Create Recipe</button>
+
+  </form>
+
+</div>
+
 <div *ngIf="recipes !== undefined; else noRecipes">
   <h3>Your recipes</h3>
   <hr>
@@ -29,7 +66,7 @@
       <td class="col-1 align-middle text-center"><app-difficulty [recipe]="recipe"></app-difficulty></td>
       <td class="col-1 align-middle">{{recipe.budget}} €</td>
       <td class="col-4 align-middle">{{recipe.description}}</td>
-      <td class="col-1 text-center align-middle"><button class="btn btn-danger text-white">X</button></td>
+      <td class="col-1 text-center align-middle"><button (click)="this.deleteRecipe(recipe.id)" class="btn btn-danger text-white">X</button></td>
   </table>
 </div>
 

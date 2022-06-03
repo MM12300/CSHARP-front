@@ -26,6 +26,6 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   public getRecipe(id : string){
-    return this.http.get<RecipeItem>(`https://localhost:5001/api/recipe/${id}`);
+    return this.http.get<RecipeItem>(`https://recipebackend.azurewebsites.net/api/recipe/${id}`);
   }
 }

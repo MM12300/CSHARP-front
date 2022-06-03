@@ -3,15 +3,10 @@ export interface RecipeItem{
   name : string,
   description: string,
   urlPicture: string,
-  ingredients : Ingredient[]|null,
+  ingredients : string,
   difficulty: number,
   duration: number,
   score: number,
   budget: number,
   recipe: string,
-}
-
-export interface Ingredient{
-  name : string,
-  quantity : number,
 }

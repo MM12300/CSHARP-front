@@ -11,6 +11,7 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { StarsComponent } from './stars/stars.component';
 import { DifficultyComponent } from './difficulty/difficulty.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { DifficultyComponent } from './difficulty/difficulty.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
