@@ -1,6 +1,6 @@
 <div>
   <h3>Add a recipe</h3>
-  <form [formGroup]="recipeForm" (ngSubmit)="createRecipe()">
+  <form class="d-flex flex-column" [formGroup]="recipeForm" (ngSubmit)="createRecipe()">
 
     <label for="name">Recipe name</label>
     <input id="name" name="name" formControlName="name" placeholder="name" type="text" />
@@ -18,10 +18,10 @@
     <input id="duration" name="duration" formControlName="duration" placeholder="duration" type="number" />
 
     <label for="score">Score</label>
-    <input id="score" name="score" formControlName="score" placeholder="score" type="number" />
+    <input id="score" name="score" formControlName="score" placeholder="Choose a score between 1 and 5" type="number" [min]="1" [max]="5"/>
 
     <label for="difficulty">Difficulty</label>
-    <input id="difficulty" name="difficulty" formControlName="difficulty" placeholder="difficulty" type="number" />
+    <input id="difficulty" name="difficulty" formControlName="difficulty" placeholder="Choose a score between 1 and 3" type="number" [min]="1" [max]="3" />
 
     <label for="budget">Budget</label>
     <input id="budget" name="budget" formControlName="budget" placeholder="budget" type="number" />
@@ -29,7 +29,7 @@
     <label for="recipe">Recipe</label>
     <input id="recipe" name="recipe" formControlName="recipe" placeholder="recipe" type="text" />
 
-    <button type="submit">Create Recipe</button>
+    <button [disabled]="isButtonDisabled" class="btn btn-light w-25" type="submit">Create Recipe</button>
 
   </form>
 

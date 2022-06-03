@@ -14,6 +14,7 @@ import {HttpClient} from "@angular/common/http";
 export class HomeComponent implements OnInit {
 
   recipeForm: FormGroup;
+  disableForm: boolean = true;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.recipeForm = this.fb.group({
@@ -57,6 +58,12 @@ export class HomeComponent implements OnInit {
       .pipe(
         //catchError(error => this.handleError(error))
       );
+  }
+
+  public userLogged(log:string){
+    if(log === 'userLoggedIn'){
+      this.disableForm= false;
+    }
   }
 
 

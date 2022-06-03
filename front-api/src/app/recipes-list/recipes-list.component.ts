@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { RecipeItem} from "../interface/recipe";
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-recipes-list',
@@ -10,6 +9,8 @@ import {Observable} from "rxjs";
   styleUrls: ['./recipes-list.component.scss']
 })
 export class RecipesListComponent implements OnInit {
+  @Input() public isButtonDisabled: boolean = true;
+
   public recipes?:RecipeItem[];
   public recipeForm: FormGroup;
 
@@ -30,8 +31,8 @@ export class RecipesListComponent implements OnInit {
   ngOnInit(): void {
     this.getRecipes().subscribe(recipes =>{
       this.recipes = recipes;
-      console.log(this.recipes);
     })
+    console.log(this.isButtonDisabled);
   }
 
   public getRecipes(){

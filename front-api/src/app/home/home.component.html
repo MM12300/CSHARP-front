@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar (loginEvent)="userLogged($event)"></app-navbar>
 <section>
   <h3>About us</h3>
   <hr>
@@ -9,7 +9,7 @@
   <p>Expliquer le fonctionnment de l'API (GET RECIPE, POST RECIPE) + lien vers le swagger</p>
 </section>
 <section>
-  <app-recipes-list></app-recipes-list>
+  <app-recipes-list [isButtonDisabled]="disableForm"></app-recipes-list>
 </section>
 <section>
   <h3>Our Team</h3>
@@ -44,8 +44,5 @@
       </div>
     </div>
   </div>
-</section>
-<section>
-  <h3>Contact Us</h3>
 </section>
 <app-footer></app-footer>
