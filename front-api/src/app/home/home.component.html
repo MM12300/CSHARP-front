@@ -1,17 +1,20 @@
-<app-navbar (loginEvent)="userLogged($event)"></app-navbar>
+<app-navbar (loginEvent)="userLogged($event)" (tokenEvent)="token($event)"></app-navbar>
 <section>
+  <hr>
   <h3>About us</h3>
   <hr>
 </section>
 <section>
+  <hr>
   <h3>Try our API</h3>
   <hr>
   <p>Expliquer le fonctionnment de l'API (GET RECIPE, POST RECIPE) + lien vers le swagger</p>
 </section>
 <section>
-  <app-recipes-list [isButtonDisabled]="disableForm"></app-recipes-list>
+  <app-recipes-list [isButtonDisabled]="disableForm" [token]="this.jwt"></app-recipes-list>
 </section>
 <section>
+  <hr>
   <h3>Our Team</h3>
   <hr>
   <div class="d-flex flex-row justify-content-between">

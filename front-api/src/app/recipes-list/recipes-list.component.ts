@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { RecipeItem} from "../interface/recipe";
-import {HttpClient} from "@angular/common/http";
+import {RecipeItem} from "../interface/recipe";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {ApiService} from "../services/api.service";
 
 @Component({
   selector: 'app-recipes-list',
@@ -10,11 +11,12 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class RecipesListComponent implements OnInit {
   @Input() public isButtonDisabled: boolean = true;
+  @Input() public token:string = '';
 
   public recipes?:RecipeItem[];
   public recipeForm: FormGroup;
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private fb: FormBuilder, public _apiService : ApiService) {
     this.recipeForm = this.fb.group({
       name: '',
       description: '',
@@ -31,12 +33,18 @@ export class RecipesListComponent implements OnInit {
   ngOnInit(): void {
     this.getRecipes().subscribe(recipes =>{
       this.recipes = recipes;
-    })
-    console.log(this.isButtonDisabled);
+    });
+  }
+
+  public makeHttpRequestHeader(token:string){
+    return {
+      headers: new HttpHeaders()
+        .set('Authorization', token)
+    };
   }
 
   public getRecipes(){
-    return this.http.get<RecipeItem[]>("https://recipebackend.azurewebsites.net/api/recipe");
+    return this._apiService.getRecipes(this.token);
   }
 
   public deleteRecipe(id:number) {
@@ -53,6 +61,7 @@ export class RecipesListComponent implements OnInit {
       .post<RecipeItem>(
         `https://recipebackend.azurewebsites.net/api/recipe`,
         recipeData,
+        this.makeHttpRequestHeader(this.token)
       ).subscribe(
       ()=>{
         this.getRecipes().subscribe(recipes => {
@@ -60,7 +69,6 @@ export class RecipesListComponent implements OnInit {
         })
       }
     )
-
     this.recipeForm.reset();
   }
 }

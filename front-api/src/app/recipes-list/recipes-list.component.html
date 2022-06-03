@@ -1,41 +1,5 @@
-<div>
-  <h3>Add a recipe</h3>
-  <form class="d-flex flex-column" [formGroup]="recipeForm" (ngSubmit)="createRecipe()">
-
-    <label for="name">Recipe name</label>
-    <input id="name" name="name" formControlName="name" placeholder="name" type="text" />
-
-    <label for="urlPicture">Recipe photo Url</label>
-    <input id="urlPicture" name="urlPicture" formControlName="urlPicture" placeholder="urlPicture" type="text" />
-
-    <label for="description">Description</label>
-    <input id="description" name="description" formControlName="description" placeholder="description" type="text" />
-
-    <label for="ingredients">Ingredients</label>
-    <input id="ingredients" name="ingredients" formControlName="ingredients" placeholder="ingredients" type="text" />
-
-    <label for="duration">Duration</label>
-    <input id="duration" name="duration" formControlName="duration" placeholder="duration" type="number" />
-
-    <label for="score">Score</label>
-    <input id="score" name="score" formControlName="score" placeholder="Choose a score between 1 and 5" type="number" [min]="1" [max]="5"/>
-
-    <label for="difficulty">Difficulty</label>
-    <input id="difficulty" name="difficulty" formControlName="difficulty" placeholder="Choose a score between 1 and 3" type="number" [min]="1" [max]="3" />
-
-    <label for="budget">Budget</label>
-    <input id="budget" name="budget" formControlName="budget" placeholder="budget" type="number" />
-
-    <label for="recipe">Recipe</label>
-    <input id="recipe" name="recipe" formControlName="recipe" placeholder="recipe" type="text" />
-
-    <button [disabled]="isButtonDisabled" class="btn btn-light w-25" type="submit">Create Recipe</button>
-
-  </form>
-
-</div>
-
 <div *ngIf="recipes !== undefined; else noRecipes">
+  <hr>
   <h3>Your recipes</h3>
   <hr>
   <h6>Check the recipes you have just created with our API</h6>
@@ -63,13 +27,67 @@
       <td class="col-1 align-middle">
         <app-stars [recipe]="recipe"></app-stars>
       </td>
-      <td class="col-1 align-middle text-center"><app-difficulty [recipe]="recipe"></app-difficulty></td>
+      <td class="col-1 align-middle text-center">
+        <app-difficulty [recipe]="recipe"></app-difficulty>
+      </td>
       <td class="col-1 align-middle">{{recipe.budget}} €</td>
       <td class="col-4 align-middle">{{recipe.description}}</td>
-      <td class="col-1 text-center align-middle"><button (click)="this.deleteRecipe(recipe.id)" class="btn btn-danger text-white">X</button></td>
+      <td class="col-1 text-center align-middle">
+        <button [disabled]="isButtonDisabled" (click)="this.deleteRecipe(recipe.id)" class="btn btn-danger text-white">
+          X
+        </button>
+      </td>
   </table>
 </div>
-
 <ng-template #noRecipes>
-  No Recipes has been created yet.
+  Please log-in to see the recipes created in our database.
 </ng-template>
+<div>
+  <hr>
+  <h3>Add a recipe</h3>
+  <hr>
+  <div class="d-flex flex-row">
+    <form class="d-flex flex-column w-50 m-auto" [formGroup]="recipeForm" (ngSubmit)="createRecipe()">
+
+      <label for="name">Recipe name</label>
+      <input class="mb-2" id="name" name="name" formControlName="name" placeholder="Name your recipe" type="text"/>
+      <label for="urlPicture">Recipe photo Url</label>
+      <input class="mb-2" id="urlPicture" name="urlPicture" formControlName="urlPicture"
+             placeholder="Url of your recipe photo" type="text"/>
+      <label for="description">Description</label>
+      <input class="mb-2" id="description" name="description" formControlName="description"
+             placeholder="Describe (shortly) your recipe" type="text"/>
+      <label for="ingredients">Ingredients</label>
+      <input class="mb-2" id="ingredients" name="ingredients" formControlName="ingredients"
+             placeholder="List your recipes ingredients" type="text"/>
+
+      <label for="duration">Duration</label>
+      <input class="mb-2" id="duration" name="duration" formControlName="duration"
+             placeholder="How long (in min) does it take to cook your recipe" type="number"/>
+
+      <label for="score">Score</label>
+      <input class="mb-2" id="score" name="score" formControlName="score" placeholder="Choose a score between 1 and 5"
+             type="number" [min]="1" [max]="5"/>
+
+      <label for="difficulty">Difficulty</label>
+      <input class="mb-2" id="difficulty" name="difficulty" formControlName="difficulty"
+             placeholder="Choose a score between 1 and 3" type="number" [min]="1" [max]="3"/>
+
+      <label for="budget">Budget</label>
+      <input class="mb-2" id="budget" name="budget" formControlName="budget" placeholder="Recipe price in €"
+             type="number"/>
+
+      <label for="recipe">Recipe</label>
+      <input class="mb-2" id="recipe" name="recipe" formControlName="recipe"
+             placeholder="Describe all the steps of your recipe" type="text"/>
+
+      <button [disabled]="isButtonDisabled" class="btn btn-light w-25 mt-2" type="submit">Create Recipe</button>
+
+    </form>
+  </div>
+
+</div>
+
+
+
+
