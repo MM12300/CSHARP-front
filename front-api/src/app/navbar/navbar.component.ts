@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   @Output() tokenEvent = new EventEmitter<string>();
   public loginForm: FormGroup;
   public jwt: string = '';
-  public button:boolean = true;
+  public button: boolean = true;
 
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.loginForm = this.fb.group({
@@ -36,13 +36,17 @@ export class NavbarComponent implements OnInit {
         recipeData,
         {responseType: 'text'}
       ).subscribe(
-      (response) => {
+      data => {
         this.loginEvent.emit('userLoggedIn');
-        this.jwt = 'bearer ' + response;
+        this.jwt = 'bearer ' + data;
         this.tokenEvent.emit(this.jwt);
         this.button = false;
+      },
+      error => {
+          console.log(error)
       }
     )
+
   }
 
 }
