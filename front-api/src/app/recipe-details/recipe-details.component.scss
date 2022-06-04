@@ -1,0 +1,15 @@
+#recipe{
+  height: calc(100vh - 120px)
+}
+p{
+  margin:0;
+}
+h3, section{
+  padding: 10px;
+  img{
+    padding-left: 50px;
+  }
+}
+img{
+  max-width: 400px;
+}

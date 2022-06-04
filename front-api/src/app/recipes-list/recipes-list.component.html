@@ -19,9 +19,7 @@
     <tr *ngFor="let recipe of recipes">
       <td class="col-3 align-middle">
         <img class="pr-2" src="{{recipe.urlPicture}}" alt="recipeImage">
-        <a routerLink="/recipe/{{recipe.id}}">
-          {{recipe.name}}
-        </a>
+        <a routerLink="/recipe/{{recipe.id}}">{{recipe.name}}</a>
       </td>
       <td class="col-1 align-middle">{{recipe.duration}} min</td>
       <td class="col-1 align-middle">

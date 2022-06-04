@@ -1,4 +1,24 @@
 <app-navbar></app-navbar>
-<p>recipe-details works!</p>
-<p *ngIf="recipe !==undefined && recipe !== null">{{recipe.name}}</p>
+<section *ngIf="recipe !==undefined && recipe !== null" id="recipe">
+<h3 class="d-flex flex-row">
+  <p>{{recipe.name}}</p>
+  <app-difficulty class="mx-2 align-self-center" [recipe]="this.recipe"></app-difficulty>
+  <app-stars class="mx-2 align-middle align-self-center" [recipe]="this.recipe"></app-stars>
+  <span class="fw-bold">&nbsp;{{recipe.budget}} €</span>
+  <img class="align-self-center" src="assets/images/clock.png" height="30px">
+  <span class="fw-bold">{{recipe.duration}} min</span>
+</h3>
+  <div class="d-flex flex-row">
+    <img class="pr-2" src="{{recipe.urlPicture}}" alt="recipeImage">
+    <div class="d-flex flex-column p-4">
+      <p>{{recipe.description}}</p>
+      <hr>
+      <p>{{recipe.ingredients}}</p>
+      <hr>
+      <p>{{recipe.recipe}}</p>
+    </div>
+  </div>
+
+</section>
+
 <app-footer></app-footer>

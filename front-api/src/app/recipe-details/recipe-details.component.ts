@@ -10,11 +10,10 @@ import {HttpClient} from "@angular/common/http";
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) { }
+  public recipe?:RecipeItem
 
-  public recipe!:RecipeItem|null;
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     const id = this.route.snapshot.paramMap.get('id');
     // TODO : Gérer le cas où l'id existe pas.
     if(id !== null){
@@ -23,6 +22,11 @@ export class RecipeDetailsComponent implements OnInit {
         }
       )
     }
+  }
+
+
+  ngOnInit(): void {
+
   }
 
   public getRecipe(id : string){
