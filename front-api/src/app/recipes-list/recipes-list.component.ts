@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {RecipeItem} from "../interface/recipe";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ApiService} from "../services/api.service";
 
 @Component({
   selector: 'app-recipes-list',
@@ -16,7 +15,7 @@ export class RecipesListComponent implements OnInit {
   public recipes?:RecipeItem[];
   public recipeForm: FormGroup;
 
-  constructor(private http: HttpClient, private fb: FormBuilder, public _apiService : ApiService) {
+  constructor(private http: HttpClient, private fb: FormBuilder) {
     this.recipeForm = this.fb.group({
       name: '',
       description: '',
@@ -44,7 +43,7 @@ export class RecipesListComponent implements OnInit {
   }
 
   public getRecipes(){
-    return this._apiService.getRecipes(this.token);
+    return this.http.get<RecipeItem[]>("https://recipebackend.azurewebsites.net/api/recipe");
   }
 
   public deleteRecipe(id:number) {
