@@ -1,21 +1,21 @@
 <app-navbar (loginEvent)="userLogged($event)" (tokenEvent)="token($event)"></app-navbar>
-<section>
+<section id="about">
   <hr>
-  <h3>About us</h3>
+  <h3>ABOUT US</h3>
   <hr>
 </section>
-<section>
+<section id="try">
   <hr>
-  <h3>Try our API</h3>
+  <h3>TRY OUR API</h3>
   <hr>
   <p>Expliquer le fonctionnment de l'API (GET RECIPE, POST RECIPE) + lien vers le swagger</p>
 </section>
-<section>
+<section id="play">
   <app-recipes-list [isButtonDisabled]="disableForm" [token]="this.jwt"></app-recipes-list>
 </section>
-<section>
+<section id="team" class="py-6">
   <hr>
-  <h3>Our Team</h3>
+  <h3>OUR TEAM</h3>
   <hr>
   <div class="d-flex flex-row justify-content-between">
     <div class="card" style="width: 18rem;">
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="assets/images/avatars/avataaars(2).png" alt="Card image cap">
+      <img class="card-img-top" src="assets/images/avatars/aaa.png" alt="Card image cap">
       <div class="card-body text-center">
         <h5 class="card-title">Raphaël PERLES</h5>
         <p class="card-text">Devops specialist - Office Happiness Manager</p>
