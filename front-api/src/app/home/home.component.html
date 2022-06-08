@@ -8,7 +8,31 @@
   <hr>
   <h3>TRY OUR API</h3>
   <hr>
-  <p>Expliquer le fonctionnment de l'API (GET RECIPE, POST RECIPE) + lien vers le swagger</p>
+  <p>Please, sign up to use our fast and easy-to-work recipe API.<br>
+    As a start to use <strong>DessertAPI</strong> products, we recommend our Recipe API 1.0. For more functionality, please consider our products, which are included in professional collections.<br><br>
+    
+    Make one API call and receive <strong>essential recipes data in one response</strong>:<br>
+    
+    - Name of the recipe<br>
+    - Description of the recipe<br>
+    - A picture of what it is supposed to look like<br>
+    - Ingredients needed<br>
+    - Difficulty of the recipe<br>
+    - Duration of this cooking<br>
+    - Score from others cookers<br>
+    - Budget<br>
+    - Anf of course, different steps to realize the recipe !<br><br>
+    
+    - A query is used to retrieve all recipes.<br>
+    - Another will show you the details of a particular recipe (by clicking on it)<br>
+    - Clicking on the cross next to the recipe will invoke the recipe deletion request <br>
+    - Connect using the login form in order to be able to add a new recipe<br>
+    - There is only one administrator role (requested in order to add or update a recipe)<br>
+    - Finally, use the form, enter a new recipe to add (the add request will be called)<br><br>
+    
+    You can read with Swagger the <strong><a href="https://recipebackend.azurewebsites.net/swagger">How it works</a></strong> and enjoy using our powerful recipe API right now.<br><br>
+    
+    Read more about this API and subscription plan in the FAQ.</p>
 </section>
 <section id="play">
   <app-recipes-list [isButtonDisabled]="disableForm" [token]="this.jwt"></app-recipes-list>
