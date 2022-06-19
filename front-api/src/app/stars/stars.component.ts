@@ -12,7 +12,6 @@ export class StarsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.recipe?.difficulty)
   }
 
 }
